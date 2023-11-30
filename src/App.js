@@ -12,15 +12,14 @@ class App extends Component {
         profession: 'webdevelloper',
       },
       show: false,
-      mountTime: null,
+      mountTime: 0,
     };
   }
 
   componentDidMount() {
-    this.setState({ mountTime: new Date() });
-
-    this.interval = setInterval(() => {
-      this.forceUpdate(); 
+    // this.setState({ mountTime: new Date() });
+   setInterval(() => {
+    this.setState({mountTime:this.state.mountTime+1})
     }, 1000);
   }
 
@@ -47,7 +46,7 @@ class App extends Component {
             <p>Profession: {person.profession}</p>
             <img src={person.imgSrc} alt="Person" />
 
-            <p>Time: {Math.floor((new Date() - mountTime) / 1000)} seconds</p>
+            <p>Time: {this.state.mountTime}</p>
           </div>
         )}
       </div>
